@@ -1,0 +1,10 @@
+.table-container {
+    width: 100%;
+    max-height: calc(100vh - 290px);
+    overflow: auto;
+}
+
+mat-header-cell {
+    padding-left: 16px;
+    font-size: 20px;
+}

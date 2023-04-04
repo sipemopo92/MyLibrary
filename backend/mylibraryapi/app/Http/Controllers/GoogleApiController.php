@@ -23,11 +23,14 @@ class GoogleApiController extends Controller
                 $book = [
                     'google_id' => $item['id'],
                     'title' => $item['volumeInfo']['title'],
-                    'authors' => implode(', ', $item['volumeInfo']['authors']),
+                    'authors' => '',
                     'description' => '',
                     'isbn' => '',
                     'thumbnail' => ''
                 ];
+                if (array_key_exists('authors', $item['volumeInfo'])) {
+                    $book['authors'] = implode(', ', $item['volumeInfo']['authors']);
+                }
                 if (array_key_exists('description', $item['volumeInfo'])) {
                     $book['description'] = $item['volumeInfo']['description'];
                 }
