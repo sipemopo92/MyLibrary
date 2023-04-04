@@ -29,7 +29,7 @@
     </div>
 
     <div class="row" *ngIf="googleapiBooks.length">
-        <div class="table-container m3">
+        <div class="table-container mt3 mx2">
             <table mat-table [dataSource]="googleapiBooks" class="mat-elevation-z8">
                 <ng-container matColumnDef="thumbnail">
                     <th mat-header-cell *matHeaderCellDef> Thumbnail </th>
@@ -56,10 +56,18 @@
                     <td mat-cell *matCellDef="let book"> {{book.google_id}} </td>
                 </ng-container>
                 <ng-container matColumnDef="info">
-                    <th mat-header-cell *matHeaderCellDef> Info </th>
-                    <td mat-cell *matCellDef="let movie">
-                        <button mat-icon-button color="primary" (click)="showInfo(movie)">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let book">
+                        <button mat-icon-button color="accent" (click)="showInfo(book)">
                             <mat-icon>info</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="save">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let book">
+                        <button mat-icon-button color="accent" (click)="import(book)">
+                            <mat-icon>save</mat-icon>
                         </button>
                     </td>
                 </ng-container>

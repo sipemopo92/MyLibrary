@@ -9,12 +9,14 @@ import { MaterialModule } from './modules/material.module';
 import { GetBooksComponent } from './components/main/get-books/get-books.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { InfobookDialogComponent } from './components/main/get-books/infobook-dialog/infobook-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    GetBooksComponent
+    GetBooksComponent,
+    InfobookDialogComponent
   ],
   imports: [
     BrowserModule,
