@@ -1,0 +1,51 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+.sidenav-container {
+    flex: 1;
+}
+
+
+mat-sidenav {
+    width: 230px;
+}
+
+
+mat-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+
+.avatar {
+    margin-top: 16px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+
+.userName {
+    margin-top: 12px;
+}
+
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+
+.logo {
+    border-radius: 90%;
+    margin-left: 20px;
+    width: auto;
+    height: 55px;
+}

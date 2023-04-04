@@ -1,11 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
+import { GetBooksComponent } from './components/main/get-books/get-books.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MainComponent
+    component: MainComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'getbooks',
+        pathMatch: 'full'
+      },
+      {
+        path: 'getbooks',
+        component: GetBooksComponent
+      }
+    ]
   },
   {
     path: '**',

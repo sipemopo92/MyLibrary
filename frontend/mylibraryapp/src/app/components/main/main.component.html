@@ -1,1 +1,33 @@
-<p>main works!</p>
+<div class="main-container">
+
+    <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <!-- <img class="logo" src="assets/img/logo.png"/> -->
+        <span class="spacer"></span>
+        <!-- <span style="font-size: small;">{{user.email}}</span> -->
+        <button mat-icon-button (click)="logout()">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="sidenav-container ">
+        <mat-sidenav #sidenav [mode]="isScreenSmall ?'over' : 'side'" [opened]="!isScreenSmall"
+            class="main-sidenav mat-elevation-z5">
+            <div class="text-center">
+                <img class="avatar mat-elevation-z8" src="assets/img/avatar.png" />
+                <!-- <h4 class="userName">{{user.name}}</h4> -->
+            </div>
+            <mat-divider></mat-divider>
+            <mat-nav-list>
+                <a mat-list-item routerLink="getbooks"><mat-icon matListItemIcon>book</mat-icon>Get Books</a>
+                <a mat-list-item routerLink="library"><mat-icon matListItemIcon>list</mat-icon>My Library</a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+</div>

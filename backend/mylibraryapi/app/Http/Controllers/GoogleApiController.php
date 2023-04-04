@@ -21,6 +21,7 @@ class GoogleApiController extends Controller
 
             foreach ($response['items'] as $item) {
                 $book = [
+                    'google_id' => $item['id'],
                     'title' => $item['volumeInfo']['title'],
                     'authors' => implode(', ', $item['volumeInfo']['authors']),
                     'description' => '',
@@ -39,12 +40,13 @@ class GoogleApiController extends Controller
                 }
                 if (array_key_exists('imageLinks', $item['volumeInfo'])) {
                     if (array_key_exists('thumbnail', $item['volumeInfo']['imageLinks'])) {
-                        $parsedUrl = parse_url($item['volumeInfo']['imageLinks']['thumbnail']);
-                        parse_str($parsedUrl['query'], $queryParams);
-                        $queryParams['zoom'] = '2';
-                        $queryString = http_build_query($queryParams);
-                        $newUrl = $parsedUrl['path'] . '?' . $queryString;
-                        $book['thumbnail'] = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $parsedUrl['path'] . '?' . $queryString;
+                        // $parsedUrl = parse_url($item['volumeInfo']['imageLinks']['thumbnail']);
+                        // parse_str($parsedUrl['query'], $queryParams);
+                        // $queryParams['zoom'] = '2';
+                        // $queryString = http_build_query($queryParams);
+                        // $newUrl = $parsedUrl['path'] . '?' . $queryString;
+                        // $book['thumbnail'] = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . $parsedUrl['path'] . '?' . $queryString;
+                        $book['thumbnail'] = $item['volumeInfo']['imageLinks']['thumbnail'];
                     }
                 }
                 array_push($res['data'], $book);

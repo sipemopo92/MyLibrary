@@ -1,0 +1,31 @@
+<div class="m3">
+
+    <div class="row">
+        <div class="column mb2 mx2">
+            <h3>Type in a book title to begin the search</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column mx2">
+            <mat-form-field>
+                <mat-label>Title</mat-label>
+                <input matInput type="text" [(ngModel)]="title">
+                <button *ngIf="title" matSuffix mat-icon-button aria-label="Clear" (click)="title=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column mx2">
+            <div class="text-center">
+                <button mat-raised-button color="primary" class="search-button" (click)="searchBooks()">
+                    <mat-icon matListItemIcon>search</mat-icon>
+                    Search Books
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
