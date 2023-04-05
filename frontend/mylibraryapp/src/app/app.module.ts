@@ -10,13 +10,17 @@ import { GetBooksComponent } from './components/main/get-books/get-books.compone
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { InfobookDialogComponent } from './components/main/get-books/infobook-dialog/infobook-dialog.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     GetBooksComponent,
-    InfobookDialogComponent
+    InfobookDialogComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

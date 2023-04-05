@@ -6,7 +6,7 @@
         </button>
         <!-- <img class="logo" src="assets/img/logo.png"/> -->
         <span class="spacer"></span>
-        <!-- <span style="font-size: small;">{{user.email}}</span> -->
+        <span style="font-size: small;">{{user.email}}</span>
         <button mat-icon-button (click)="logout()">
             <mat-icon>logout</mat-icon>
         </button>
@@ -17,7 +17,7 @@
             class="main-sidenav mat-elevation-z5">
             <div class="text-center">
                 <img class="avatar mat-elevation-z8" src="assets/img/avatar.png" />
-                <!-- <h4 class="userName">{{user.name}}</h4> -->
+                <h4 class="userName">{{user.name}} {{user.lastname}}</h4>
             </div>
             <mat-divider></mat-divider>
             <mat-nav-list>
