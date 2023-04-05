@@ -5,6 +5,7 @@ import { GetBooksComponent } from './components/main/get-books/get-books.compone
 import { RouteGuardService } from './services/route-guard.service';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LibraryComponent } from './components/main/library/library.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,12 @@ const routes: Routes = [
       {
         path: 'getbooks',
         component: GetBooksComponent
+      },
+      {
+        path: 'library',
+        component: LibraryComponent
       }
+      
     ]
   },
   {

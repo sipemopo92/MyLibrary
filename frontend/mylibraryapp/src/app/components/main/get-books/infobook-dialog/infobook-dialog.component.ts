@@ -15,4 +15,5 @@ export class InfobookDialogComponent {
     @Inject(MAT_DIALOG_DATA) public book: IGoogleapiBook,
   ) { }
 
+  
 }

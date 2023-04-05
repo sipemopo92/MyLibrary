@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { InfobookDialogComponent } from './components/main/get-books/infobook-dialog/infobook-dialog.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LibraryComponent } from './components/main/library/library.component';
+import { InfomybookDialogComponent } from './components/main/library/infomybook-dialog/infomybook-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RegisterComponent } from './components/register/register.component';
     GetBooksComponent,
     InfobookDialogComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LibraryComponent,
+    InfomybookDialogComponent
   ],
   imports: [
     BrowserModule,

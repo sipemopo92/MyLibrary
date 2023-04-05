@@ -40,3 +40,4 @@ Route::get('/googleapi', [GoogleApiController::class, 'getBooks']);
 Route::get('books/{id}', [BooksController::class, 'index']);
 Route::post('books/{id}', [BooksController::class, 'store']);
 Route::delete('books/{user_id}/{book_id}', [BooksController::class, 'removeUser']);
+Route::patch('books/updateReadCount', [BooksController::class, 'updateReadCount']);

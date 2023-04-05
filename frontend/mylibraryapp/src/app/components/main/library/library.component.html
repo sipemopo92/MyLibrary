@@ -1,0 +1,42 @@
+<div class="table-container m3">
+    <table mat-table [dataSource]="books" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="thumbnail">
+            <th mat-header-cell *matHeaderCellDef> Thumbnail </th>
+            <td mat-cell *matCellDef="let book"> {{book.thumbnail}} </td>
+        </ng-container>
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Title </th>
+            <td mat-cell *matCellDef="let book"> {{book.title}} </td>
+        </ng-container>
+        <ng-container matColumnDef="authors">
+            <th mat-header-cell *matHeaderCellDef> Authors </th>
+            <td mat-cell *matCellDef="let book"> {{book.authors}} </td>
+        </ng-container>
+        <ng-container matColumnDef="read_count">
+            <th mat-header-cell *matHeaderCellDef> Read Count </th>
+            <td mat-cell *matCellDef="let book"> {{book.pivot.read_count}} </td>
+        </ng-container>
+        <ng-container matColumnDef="added_at">
+            <th mat-header-cell *matHeaderCellDef> Added at </th>
+            <td mat-cell *matCellDef="let book"> {{book.pivot.added_at}} </td>
+        </ng-container>
+        <ng-container matColumnDef="info">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let book">
+                <button mat-icon-button color="accent" (click)="showInfo(book)">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let book">
+                <button mat-icon-button color="warn" (click)="deleteRow(book)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

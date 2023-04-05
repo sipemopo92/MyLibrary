@@ -52,8 +52,8 @@ class BooksController extends Controller
             );
             if (!$user->books()->where('books.id', $book->id)->exists()) {
                 $user->books()->attach($book);
-                $user->books()->updateExistingPivot($book->id, ['added_at' => now()]);
             }
+            $user->books()->updateExistingPivot($book->id, ['added_at' => now(), 'deleted_at' => null]);
             $res['data'] = $book;
         } catch (\Exception $e) {
             $res['success'] = false;
@@ -63,21 +63,46 @@ class BooksController extends Controller
     }
 
 
-    public function removeUser($user_id, $book_id) {
+    public function removeUser($user_id, $book_id)
+    {
         $res = [
             'data' => '',
             'success' => true,
             'message' => ''
         ];
         try {
-            $book = Book::find($book_id);
-            if ($book) {
-                $book->users()->detach($user_id);
-                $res['data'] = $book;
+            $user = User::find($user_id);
+            if ($user) {
+                $user->books()->updateExistingPivot($book_id, ['deleted_at' => now()]);
+                $res['data'] = $user->books()->find($book_id);
             }
         } catch (\Exception $e) {
             $res['success'] = false;
             $res['message'] = $e->getMessage();
+        }
+        return $res;
+    }
+
+
+    public function updateReadCount(Request $request)
+    {
+        $res = [
+            'data' => '',
+            'success' => true,
+            'message' => ''
+        ];
+        try {
+            $user_id = $request->user_id;
+            $book_id = $request->book_id;
+            $read_count = $request->read_count;
+            $user = User::find($user_id);
+            if ($user) {
+                $user->books()->updateExistingPivot($book_id, ['read_count' => $read_count]);
+                $res['data'] = $user->books()->find($book_id);
+            }
+        } catch (\Exception $e) {
+            $res['success'] = false;
+            $res['message'] = '$e->getMessage()';
         }
         return $res;
     }
