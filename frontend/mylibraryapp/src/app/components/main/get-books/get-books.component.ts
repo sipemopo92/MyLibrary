@@ -56,6 +56,8 @@ export class GetBooksComponent {
         },
         error: (error: HttpHeaderResponse) => {
           console.error(error);
+          this.authService.logout();
+          this.router.navigate(['login']);
         }
       })
     }

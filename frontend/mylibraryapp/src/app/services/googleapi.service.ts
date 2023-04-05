@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseGoogleapiBooks } from '../models/response-api';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,19 @@ export class GoogleapiService {
 
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private authService: AuthService
   ) { }
 
 
   searchBooks(title: string) {
-    return this.httpClient.get<ResponseGoogleapiBooks>(this.apiUrl + '/?title=' + title);
+    return this.httpClient.get<ResponseGoogleapiBooks>(this.apiUrl + '/?title=' + title, { headers: this.getAuthHeader() });
   }
+
+
+  getAuthHeader(): HttpHeaders {
+    const headers = new HttpHeaders({ Authorization: 'Bearer ' + this.authService.getToken() });
+    return headers;
+  }
+  
 }
