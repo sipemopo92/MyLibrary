@@ -1,6 +1,7 @@
 import { HttpHeaderResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -17,7 +18,8 @@ export class RegisterComponent {
 
   constructor(
     private router: Router, 
-    private authservice: AuthService
+    private authservice: AuthService,
+    private matSnackBar: MatSnackBar
   ) { }
 
 
@@ -52,7 +54,15 @@ export class RegisterComponent {
         this.router.navigate(['main']);
       },
       error: (error: HttpHeaderResponse) => {
-        console.log(error);
+        this.matSnackBar.open('Error! Try again', '',
+            {
+              horizontalPosition: 'end',
+              verticalPosition: 'bottom',
+              duration: 2000,
+              panelClass: ['text-center']
+            }
+        );
+        console.error(error);
       }
     });
   }

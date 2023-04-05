@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
+
+    public function __construct()
+    {
+    }
+
     public function index($user_id)
     {
         $res = [

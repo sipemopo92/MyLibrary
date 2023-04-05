@@ -41,14 +41,19 @@ export class GetBooksComponent {
 
   searchBooks() {
     if (this.title == '') {
-      alert('Insert a title');
-      // TODO
+      this.matSnackBar.open('Insert a title', '',
+            {
+              horizontalPosition: 'end',
+              verticalPosition: 'bottom',
+              duration: 2000,
+              panelClass: ['text-center']
+            }
+        );
     } else {
       this.googleapiService.searchBooks(this.title).subscribe({
         next: (res) => {
           if (res.success) {
             this.googleapiBooks = res.data;
-            // console.log(this.googleapiBooks);
           } else {
             alert(res.message);
             console.error(res);

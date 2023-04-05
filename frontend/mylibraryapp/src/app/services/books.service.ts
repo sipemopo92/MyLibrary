@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { IGoogleapiBook } from '../models/googleapi-book';
@@ -28,17 +28,17 @@ export class BooksService {
       'isbn': book.isbn,
       'thumbnail': book.thumbnail
     };
-    return this.httpClient.post<ResponseBook>(this.apiUrl + '/' + user_id, body);
+    return this.httpClient.post<ResponseBook>(this.apiUrl + '/' + user_id, body, { headers: this.getAuthHeader() });
   }
 
 
   getBooksByUserId(user_id: number) {
-    return this.httpClient.get<ResponseBooks>(this.apiUrl + '/' + user_id);
+    return this.httpClient.get<ResponseBooks>(this.apiUrl + '/' + user_id, { headers: this.getAuthHeader() });
   }
 
 
   removeBook(user_id: number, book_id: number) {
-      return this.httpClient.delete<ResponseBook>(this.apiUrl + '/' + user_id + '/' + book_id);
+      return this.httpClient.delete<ResponseBook>(this.apiUrl + '/' + user_id + '/' + book_id, { headers: this.getAuthHeader() });
   }
 
 
@@ -48,8 +48,15 @@ export class BooksService {
       'book_id': book_id,
       'read_count': read_count,
     };
-    return this.httpClient.patch<ResponseBook>(this.apiUrl + '/updateReadCount', body)
+    return this.httpClient.patch<ResponseBook>(this.apiUrl + '/updateReadCount', body, { headers: this.getAuthHeader() })
   }
+
+
+  getAuthHeader(): HttpHeaders {
+    const headers = new HttpHeaders({ Authorization: 'Bearer ' + this.authService.getToken() });
+    return headers;
+  }
+
 
 }
 
