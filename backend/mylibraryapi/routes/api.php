@@ -3,6 +3,7 @@
 use App\Http\Controllers\GoogleApiController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BooksController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('users', UsersController::class);
 
 Route::get('/googleapi', [GoogleApiController::class, 'getBooks']);
+
+Route::get('books/{id}', [BooksController::class, 'index']);
+Route::post('books/{id}', [BooksController::class, 'store']);
+Route::delete('books/{user_id}/{book_id}', [BooksController::class, 'removeUser']);

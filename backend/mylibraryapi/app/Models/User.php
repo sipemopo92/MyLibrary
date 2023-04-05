@@ -45,6 +45,12 @@ class User extends Authenticatable implements JWTSubject
     ];
 
 
+    public function books()
+    {
+        return $this->belongsToMany(Book::class);
+    }
+
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -68,4 +74,6 @@ class User extends Authenticatable implements JWTSubject
             'email' => $this->email
         ];
     }
+
+    
 }
